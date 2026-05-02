@@ -106,9 +106,9 @@ Statistical measures such as **mean, standard deviation, and maximum values** we
 
 To improve model robustness and handle variability in real-world conditions, data augmentation techniques were applied:
 
-** Addition of random noise
-** Random amplitude scaling
-** Frequency masking on MFCC features
+* Addition of random noise
+* Random amplitude scaling
+* Frequency masking on MFCC features
 
 These techniques increase dataset diversity and help reduce overfitting, improving generalization .
 
@@ -128,16 +128,16 @@ The dataset shows **class imbalance**, where some water activity classes contain
 
 Since the feature space is high-dimensional, **Principal Component Analysis (PCA)** was used to reduce it to two dimensions for visualization.
 
-** Distinct clusters indicate effective feature representation
-** Overlapping regions suggest similarity between certain activities
+* Distinct clusters indicate effective feature representation
+* Overlapping regions suggest similarity between certain activities
 
 ---
 
 ## Insights
 
-** Overlapping clusters indicate similarity between some water activities
-** Distinct clusters confirm meaningful feature extraction
-** Class imbalance may affect model performance
+* Overlapping clusters indicate similarity between some water activities
+* Distinct clusters confirm meaningful feature extraction
+* Class imbalance may affect model performance
 
 Overall, feature extraction and visualization validate the effectiveness of the data processing pipeline while highlighting challenges in classification .
 
@@ -298,11 +298,11 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 ### **Challenges**
 
-** Limited experience in mobile application development.
-** Dependency on server-based inference leading to latency.
-** Difficulty in implementing on-device model inference.
-** Runtime errors and instability in the mobile application.
-** Challenges in achieving consistent real-time predictions.
+* Limited experience in mobile application development.
+* Dependency on server-based inference leading to latency.
+* Difficulty in implementing on-device model inference.
+* Runtime errors and instability in the mobile application.
+* Challenges in achieving consistent real-time predictions.
  During live testing, the Flutter mobile app failed to produce accurate predictions. The model was trained to expect engineered features (Spectrograms), but the app was sending raw 44.1 kHz audio, as replicating the feature engineering math natively in Flutter proved difficult.
 
 **The Change:** We embedded the feature engineering directly inside the TensorFlow model by adding a custom preprocessing layer at the front of the network.

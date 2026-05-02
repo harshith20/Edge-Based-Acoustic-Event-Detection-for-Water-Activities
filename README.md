@@ -156,12 +156,12 @@ This allows validation of model performance across all activity classes.
 
 #### Testing metrics:
 <p align="center">
-  <img src="images/testing_metrics.png" alt="metrics" width="300">
+  <img src="images/testing_metrics.png" alt="metrics" width="500">
 </p
 
 #### Confusion Matrix:
 <p align="center">
-  <img src="images/testing_confusion_matrix.png" alt="metrics" width="300">
+  <img src="images/testing_confusion_matrix.png" alt="metrics" width="500">
 </p
 
 ---
@@ -194,7 +194,7 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 #### Comparison of Quantized and Unquantized Models Deployment
 <p align="center">
-  <img src="images/deployment.png" alt="deployment" width="300">
+  <img src="images/deployment.png" alt="deployment" width="500">
 </p
 
 

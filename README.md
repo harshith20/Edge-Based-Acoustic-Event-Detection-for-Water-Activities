@@ -67,15 +67,17 @@ This was the most crucial step since we had no available datasets to work with. 
 
 Primarily we first collected two sets of data that was finally used in the development and deployment of the model.
 
-- **First (Fixed Evironment)** We collected data of three activities `HandWashing` `Free Running Tap` `Idle (No activity)`. All the three activities were done in a single washroom, in a single wash basin.
+- **First (Fixed Environment: Single washroom)** We collected data of three activities `HandWashing` `Free Running Tap` `Idle (No activity)`. All the three activities were done in a single washroom, in a single wash basin.
 - The audio was recorded using a mobile phone at 48kHz. The mobile phone was placed at a single location.
 - For each activity we recorded a continuous strech of about 10 - 15 mins of data.
 - From the above collected data we also generated a new data of 16Hz using audacity incase we want to specifically train for the aurdirino devices.
 
-- **Second (Variable Environment)** We collected data of 5 avtivities `Handwashing` `Free Running Tap` `Idle (No activity)` `Filling the bottle` `Washing Utensil`. Here we have increased the number of activities.
+- **Second (Variable : Multiple washrooms)** We collected data of 5 avtivities `Handwashing` `Free Running Tap` `Idle (No activity)` `Filling the bottle` `Washing Utensil`. Here we have increased the number of activities.
 - The audio was recorded using a mobile phone at 44.1 kHz. We introduced variability of environment, distace of the recording device (phone).
 - We collected data across 10 different washrooms. We varied the distance of the recording device by few 10 cm to around 50 cm. We also varied the orientation of the recording device
 - For each activity we collected data for about 2-3 mins. Only exception being Filling the bottle, since each bottle filled up within less the 15 seconds.
+
+**All the development and deployment given here is done in the variable environment. **
 
 ## Challenges and other failed attempts
 

@@ -49,6 +49,72 @@ During the course of data collection we encountered several challenges, some of 
 - Since the data was collected in washrooms, privacy was a concern. We ensured that no one was using the washroom when the data was being collected mostly collecting the data at night times.
 
 - While collecting data we were faced with the dillema of water wastage. So we tried to minimize the water wastage (by bare minimum) by using water filled in bottles to water the plants nearby.
+
+# Data Processing and Feature Extraction
+
+## Feature Extraction
+
+To convert raw audio signals into meaningful representations, feature extraction techniques were applied. The primary feature used is **Mel-Frequency Cepstral Coefficients (MFCCs)**, which capture the spectral characteristics of sound based on human auditory perception. MFCCs are effective in representing timbre and frequency patterns of water sounds.
+
+In addition to MFCCs, the following features were extracted:
+
+**Delta and Delta-Delta Coefficients**
+  Capture temporal variations and changes in sound over time
+
+**Zero Crossing Rate (ZCR)**
+  Measures signal noisiness and abrupt changes
+
+**Spectral Centroid**
+  Represents the brightness of sound
+
+**Spectral Contrast**
+  Captures variations across frequency bands
+
+Statistical measures such as **mean, standard deviation, and maximum values** were computed for each feature. All features were combined into a single feature vector for model input .
+
+---
+
+## Data Augmentation
+
+To improve model robustness and handle variability in real-world conditions, data augmentation techniques were applied:
+
+** Addition of random noise
+** Random amplitude scaling
+** Frequency masking on MFCC features
+
+These techniques increase dataset diversity and help reduce overfitting, improving generalization .
+
+---
+
+## Feature Visualization and Analysis
+
+Exploratory Data Analysis (EDA) was performed to evaluate the effectiveness of the extracted features.
+
+###  Class Distribution
+
+The dataset shows **class imbalance**, where some water activity classes contain more samples than others. This imbalance can bias model predictions and requires techniques like augmentation and balancing .
+
+---
+
+### PCA-Based Visualization
+
+Since the feature space is high-dimensional, **Principal Component Analysis (PCA)** was used to reduce it to two dimensions for visualization.
+
+** Distinct clusters indicate effective feature representation
+** Overlapping regions suggest similarity between certain activities
+
+---
+
+## Insights
+
+** Overlapping clusters indicate similarity between some water activities
+** Distinct clusters confirm meaningful feature extraction
+** Class imbalance may affect model performance
+
+Overall, feature extraction and visualization validate the effectiveness of the data processing pipeline while highlighting challenges in classification .
+
+---
+
 # Model Development
 
 ## Iteration 1: The Background Noise Problem
@@ -156,12 +222,12 @@ This allows validation of model performance across all activity classes.
 
 #### Testing metrics:
 <p align="center">
-  <img src="images/testing_metrics.png" alt="metrics" width="500">
+  <img src="images/testing_metrics.png" alt="metrics" width="600">
 </p
 
 #### Confusion Matrix:
 <p align="center">
-  <img src="images/testing_confusion_matrix.png" alt="metrics" width="500">
+  <img src="images/testing_confusion_matrix.png" alt="metrics" width="600">
 </p
 
 ---
@@ -188,13 +254,13 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 - On phones we can directly deploy the model by scanning this QR code.
 
 <p align="center">
-  <img src="images/qr.png" alt="qr" width="200">
+  <img src="images/qr.png" alt="qr" width="300">
 </p
 
 
 #### Comparison of Quantized and Unquantized Models Deployment
 <p align="center">
-  <img src="images/deployment.png" alt="deployment" width="500">
+  <img src="images/deployment.png" alt="deployment" width="600">
 </p
 
 

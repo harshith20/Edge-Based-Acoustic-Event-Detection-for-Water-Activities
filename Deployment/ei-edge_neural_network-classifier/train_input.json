@@ -1,0 +1,29 @@
+{
+    "classes": [
+        "bottle",
+        "cleaning",
+        "idle",
+        "tap"
+    ],
+    "mode": "classification",
+    "printHWInfo": false,
+    "inputShapeString": "(1287,)",
+    "yType": "npy",
+    "trainTestSplit": 0.2,
+    "stratifiedTrainTest": false,
+    "convertInt8": true,
+    "profileInt8": true,
+    "skipEmbeddingsAndMemory": false,
+    "objectDetectionAugmentation": false,
+    "syntiantTarget": false,
+    "maxTrainingTimeSeconds": 3600,
+    "remainingGpuComputeTimeSeconds": null,
+    "isEnterpriseProject": false,
+    "flattenDataset": false,
+    "akidaModel": false,
+    "akidaEdgeModel": false,
+    "skipMemoryProfiling": false,
+    "explicitValidationSplit": false,
+    "customValidationSplit": false,
+    "tensorboardLogging": true
+}

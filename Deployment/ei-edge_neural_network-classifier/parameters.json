@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "type": "machine-learning",
+    "info": {
+        "name": "",
+        "description": "",
+        "indRequiresGpu": false,
+        "operatesOn": "audio"
+    },
+    "parameters": [
+        {
+            "name": "Number of training cycles",
+            "value": 30,
+            "type": "int",
+            "help": "Number of epochs to train the neural network on.",
+            "param": "epochs"
+        },
+        {
+            "name": "Learning rate",
+            "value": 0.001,
+            "type": "float",
+            "help": "How fast the neural network learns, if the network overfits quickly, then lower the learning rate.",
+            "param": "learning-rate"
+        },
+        {
+            "name": "Batch size",
+            "value": 32,
+            "type": "int",
+            "help": "The batch size to use during training. Consider reducing this for larger models.",
+            "param": "batch-size",
+            "section": "advanced"
+        }
+    ]
+}

@@ -7,18 +7,46 @@ To detect and classify water based activities based on audio.
 
 ## Motivation and relavance.
 
-The ultimate vision and goal was to estimate the water usage for each activity based on audio. Generally whenever one wants to estimate the water usage we use a a 
+The ultimate vision and goal was to estimate the water usage for each activity based on audio. Generally whenever one wants to estimate the water usage they use water flow meter. But this can be only be used to measure aggregate usage and doesnot distinguish how much water is being used for each activity. Moreover setting up the flowmeter is a challenging and costly affair requiring plumbing modification, maintainence and also has scalability issues. 
 
+Although this can be used in households, to generate detailed analysis of the amount of water used in different activities provinding awareness to reduce water wastage on a more fine grain level, it has many other practical applications. For example this type of system can be used to in chemical factories to motitor the flow of chemicals, the reaction especially when dealing with corrosive chemicals where using flow meters becoming challenging. It can also be used to detect leaks, inefficiencies in water usage, abnormal flows etc in large scale organizations helping them to take appropriate measures.
 
+We would want to develop and deploy the model on an edge device because we want the system to have high latency to be able to classify the changing activities. Moreover in certain use cases (for example if one deploys this in a washroom setting) there are privacy concerns where we do not want the audio to leave the device rather on the final statistics of the usage.
 
+Although we were not able to achive this ultimate goal of estimating the water usage based on activity, we were only able to classify the activities based on audio (which in itself turned out to be a tricy task).
 
+# Proposed Solution
 
+We propose the following solution. The system consists of a edge device (either an PCB with an audio module or a mobile phone) that both records the audio and does the necessary processing to classify the audio. Another device that collects the classification scores and other meta data from this edge device and provides statistics, insights and suggestions into water usage based on the data. (We were not able to finish the second part)
 
+# Hardware and Software Setup
 
+This section describes the hardware components and software tools used in the Water Detection System.
 
+##  Hardware Requirements
 
+| Components                    | Specifications                                                                                                              
+| ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Arduino Nicla Vision          | 2MP camera, 6-axis motion sensor, microphone, distance sensor, ST STM32H747AII6 Dual-Core processor (Cortex-M7/M4)          |
+| Arduino Nicla Voice           | nRF52832 SoC, 64 MHz Arm Cortex-M4F, 64 KB SRAM, 512 KB Flash, ANNA-B112 Bluetooth module, 12-bit ADC, SPI & I2C support.   |
+| Mobile Phone (Moto G57 Power) | Android smartphone used for running the Flutter app, audio recording, and displaying real-time predictions                  |
+| PC / Laptop                   | Used for development, deployment, and firmware flashing                                                                     |
+| USB Cable                     | Data transfer and device connection                                                                                         |
+| Power Bank (Ubon 10000mAh)    | Portable power supply for hardware devices                                                                                  |
 
+---
 
+##  Software Used
+
+| Software                          | Purpose                                                    |
+| --------------------------------- | ---------------------------------------------------------- |
+| TensorFlow 2.x                    | Model development, training, and quantization              |
+| Jupyter Notebook                  | Model training, evaluation, and TFLite conversion          |
+| Edge Impulse Studio               | Model packaging and deployment to Arduino                  |
+| OpenMV                            | Device interaction and testing                             |
+| Arduino IDE                       | Firmware integration and flashing                          |
+| Flutter                           | Android application development                            |
+| Google Firebase                   | Real-time data storage and statistics                      |
 
 #  Data Collection
 
@@ -236,17 +264,17 @@ This allows validation of model performance across all activity classes.
 
 The trained model was deployed on a mobile application to enable real-time detection of water-based activities using acoustic signals. The application records audio using the smartphone microphone, processes the input, and predicts activities such as handwashing, bottle filling, idle and utensils cleaning. The results are displayed within the app, providing real-time insights into user activity.
 
- During live testing, the Flutter mobile app failed to produce accurate predictions. The model was trained to expect engineered features (Spectrograms), but the app was sending raw 44.1 kHz audio, as replicating the feature engineering math natively in Flutter proved difficult.
-
-**The Change:** We embedded the feature engineering directly inside the TensorFlow model by adding a custom preprocessing layer at the front of the network.
-
-**The Result:** The mobile app now records 13 second chunks of raw audio and passes it directly to the model. The model handles its own feature extraction internally, which resolved the mismatch and stabilized the live predictions.
-
-
-
-The system relied on a server-based approach, where recorded audio was sent to a backend for processing and prediction. However, this introduced latency and dependency on internet connectivity. To address this limitation, an alternative version of the application was developed to perform on-device inference, allowing direct processing on the mobile device without requiring server communication but it did not completed in mean time.
+The system relied on a server-based approach, where recorded audio was sent to a backend for processing and prediction. However, this introduced latency and dependency on internet connectivity. To address this limitation, an alternative version of the application was developed to perform on-device inference, allowing direct processing on the mobile device without requiring server communication, but this on-device application still has bugs that need to be addressed.
 
 Users can download and run the application by accessing the **`water_app`** folder from the project GitHub repository. The app can be installed on a mobile device by enabling developer mode and USB debugging, connecting the phone to a laptop, and running the application using Flutter. Detailed setup and usage instructions are provided in the **`README.md`** file included in the repository.
+
+## Deployment on Arduino Device
+
+The trained model from the Edge impulse studio was deployed on Nicla Vision. To do this we built the model using the Arduino librory on Edge Impulse and then compiling and flashing the obtaing files using the Arduino IDE. The IDE was use to provide real time inference, where it was connected to a PC using a USB cable.
+
+Although we tried to deploy the model on Nicla Voice, we faced several challenges that could not be resolved and we ultimately changed the device to Nicla Vision.
+
+## Deployment using edge impulse
 
 The trained 2D CNN model can be deployed directly from Edge Impulse to:
 - Android Phone: Using the edge impulse android library.
@@ -270,11 +298,16 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 ### **Challenges**
 
-* Limited experience in mobile application development.
-* Dependency on server-based inference leading to latency.
-* Difficulty in implementing on-device model inference.
-* Runtime errors and instability in the mobile application.
-* Challenges in achieving consistent real-time predictions.
+** Limited experience in mobile application development.
+** Dependency on server-based inference leading to latency.
+** Difficulty in implementing on-device model inference.
+** Runtime errors and instability in the mobile application.
+** Challenges in achieving consistent real-time predictions.
+ During live testing, the Flutter mobile app failed to produce accurate predictions. The model was trained to expect engineered features (Spectrograms), but the app was sending raw 44.1 kHz audio, as replicating the feature engineering math natively in Flutter proved difficult.
+
+**The Change:** We embedded the feature engineering directly inside the TensorFlow model by adding a custom preprocessing layer at the front of the network.
+
+**The Result:** The mobile app now records 13 second chunks of raw audio and passes it directly to the model. The model handles its own feature extraction internally, which resolved the mismatch and stabilized the live predictions.
 
 
 ## Deployment on Aurdirino device.

@@ -55,11 +55,11 @@ This section describes the hardware components and software tools used in the Wa
 This was the most crucial step since we had no available datasets to work with. We created our own dataset and we had to go through multiple iterations to do it.
 
 <p align="center">
-  <img src="images/data_collection.png" alt="metrics" width="600">
+  <img src="images/data_collection.jpeg" alt="metrics" width="600">
 </p
 
 <p align="center">
-  <img src="images/data_collection3.png" alt="metrics" width="600">
+  <img src="images/data_collection3.jpeg" alt="metrics" width="600">
 </p
 
 
@@ -118,11 +118,11 @@ Statistical measures such as **mean, standard deviation, and maximum values** we
 <!-- 3 photos mfcc1, spec, waveform -->
 
 <p align="center">
-  <img src="images/mfcc1.png" alt="metrics" width="600">
+  <img src="images/mfcc_1.png" alt="metrics" width="600">
 </p
 
 <p align="center">
-  <img src="images/spectogram.png" alt="metrics" width="600">
+  <img src="images/spectrogram.png" alt="metrics" width="600">
 </p
 
 <p align="center">

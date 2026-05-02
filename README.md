@@ -25,14 +25,14 @@ This section describes the hardware components and software tools used in the Wa
 
 ##  Hardware Requirements
 
-| Components                    | Specifications                                                                                                              
-| ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Arduino Nicla Vision          | 2MP camera, 6-axis motion sensor, microphone, distance sensor, ST STM32H747AII6 Dual-Core processor (Cortex-M7/M4)          |
-| Arduino Nicla Voice           | nRF52832 SoC, 64 MHz Arm Cortex-M4F, 64 KB SRAM, 512 KB Flash, ANNA-B112 Bluetooth module, 12-bit ADC, SPI & I2C support.   |
-| Mobile Phone (Moto G57 Power) | Android smartphone used for running the Flutter app, audio recording, and displaying real-time predictions                  |
-| PC / Laptop                   | Used for development, deployment, and firmware flashing                                                                     |
-| USB Cable                     | Data transfer and device connection                                                                                         |
-| Power Bank (Ubon 10000mAh)    | Portable power supply for hardware devices                                                                                  |
+| **Component** | **Specifications / Purpose** |
+|--------------|------------------------------|
+| **Arduino Nicla Vision** | 2 MP camera, 6‑axis motion sensor, microphone, distance sensor, **STM32H747AII6 dual‑core processor** (Cortex‑M7 & Cortex‑M4) |
+| **Arduino Nicla Voice** | **nRF52832 SoC**, 64 MHz Arm Cortex‑M4F, 64 KB SRAM, 512 KB Flash, ANNA‑B112 Bluetooth module, 12‑bit ADC, SPI & I²C support |
+| **Mobile Phone (Moto G57 Power)** | Android smartphone used for running the Flutter app, audio recording, and displaying real‑time predictions |
+| **PC / Laptop** | Used for Edge Impulse project development, model training, firmware building, and device flashing |
+| **USB Cable** | Used for data transfer, power supply, and device programming/debugging |
+| **Power Bank (Ubon 10000 mAh)** | Portable power supply for standalone operation of embedded hardware |                                                                               |
 
 ---
 

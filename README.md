@@ -154,6 +154,16 @@ Edge Impulse automatically evaluates the model using:
 
 This allows validation of model performance across all activity classes.
 
+#### Testing metrics:
+<p align="center">
+  <img src="images/testing_metrics.png" alt="metrics" width="300">
+</p
+
+#### Confusion Matrix:
+<p align="center">
+  <img src="images/testing_confusion_matrix.png" alt="metrics" width="300">
+</p
+
 ---
 
 ### **Deployment on Mobile Phone**
@@ -180,6 +190,13 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 <p align="center">
   <img src="images/qr.png" alt="qr" width="200">
 </p
+
+
+#### Comparison of Quantized and Unquantized Models Deployment
+<p align="center">
+  <img src="images/deployment.png" alt="deployment" width="300">
+</p
+
 
 ---
 

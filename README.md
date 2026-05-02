@@ -355,6 +355,8 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 **The Result:** The mobile app now records 13 second chunks of raw audio and passes it directly to the model. The model handles its own feature extraction internally, which resolved the mismatch and stabilized the live predictions.
 
 
+## Course link: https://www.samy101.com/edge-ai-26/
+
 <!-- ## Deployment on Aurdirino device. -->
 
 

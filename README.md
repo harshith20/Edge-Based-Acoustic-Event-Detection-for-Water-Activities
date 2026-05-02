@@ -197,6 +197,11 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 
 **The Result:** We moved away from the FCNN to find a model capable of scanning audio sequentially.
 
+<p align="center">
+  <img src="images/nn_architecture.png" alt="metrics" width="300">
+</p>
+
+
 ---
 
 ## Iteration 4: Switching to a 2D CNN
@@ -312,11 +317,20 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
   <img src="images/qr.png" alt="qr" width="300">
 </p
 
+<p align="center">
+  <img src="images/impulse_result.jpeg" alt="metrics" width="300">
+</p>
+
+<p align="center">
+  <img src="images/impulse_result2.jpeg" alt="metrics" width="300">
+</p>
+
 
 #### Comparison of Quantized and Unquantized Models Deployment
 <p align="center">
   <img src="images/deployment.png" alt="deployment" width="600">
 </p
+
 
 
 ---

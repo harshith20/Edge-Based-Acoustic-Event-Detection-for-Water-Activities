@@ -260,7 +260,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
 
 <p align="center">
   <img src="images/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">
-</p
+</p>
 
 
 #### Training Details
@@ -283,12 +283,12 @@ This allows validation of model performance across all activity classes.
 #### Testing metrics:
 <p align="center">
   <img src="images/testing_metrics.png" alt="metrics" width="600">
-</p
+</p>
 
 #### Confusion Matrix:
 <p align="center">
   <img src="images/testing_confusion_matrix.png" alt="metrics" width="600">
-</p
+</p>
 
 ---
 
@@ -315,13 +315,10 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 <p align="center">
   <img src="images/qr.png" alt="qr" width="300">
-</p
-
-<p align="center">
-  <img src="images/impulse_result.jpeg" alt="metrics" width="300">
 </p>
 
 <p align="center">
+  <img src="images/impulse_result.jpeg" alt="metrics" width="300">
   <img src="images/impulse_result2.jpeg" alt="metrics" width="300">
 </p>
 
@@ -329,7 +326,7 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 #### Comparison of Quantized and Unquantized Models Deployment
 <p align="center">
   <img src="images/deployment.png" alt="deployment" width="600">
-</p
+</p>
 
 
 

@@ -165,18 +165,13 @@ The dataset shows **class imbalance**. For example the bottle filling activity h
 
 Since the feature space is high-dimensional, **Principal Component Analysis (PCA)** was used to reduce it to two dimensions for visualization.
 
-* Distinct clusters indicate effective feature representation
-* Overlapping regions suggest similarity between certain activities
-* Overlapping clusters indicate similarity between some water activities
-* Distinct clusters confirm meaningful feature extraction
-* Class imbalance may affect model performance
-
-Overall, feature extraction and visualization validate the effectiveness of the data processing pipeline while highlighting challenges in classification.
+* Clearly activities like handwashing, silence, and cleaning form a little distinctive clusters that can be used to learn decision boundaries.
+* Interesting thing to note is that the tap water overlaps with all of the activities. This can be expected because the tap is always running with all other activities except silence/idle with which the tap doesn't overlap.
+* Clearly the PCA also suggests class imbalance.
 
 <p align="center">
   <img src="images/pca.png" alt="metrics" width="600">
 </p>
-
 
 ---
 

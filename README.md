@@ -17,7 +17,9 @@ Although we were not able to achive this ultimate goal of estimating the water u
 
 # Proposed Solution
 
-We propose the following solution. The system consists of a edge device (either an PCB with an audio module or a mobile phone) that both records the audio and does the necessary processing to classify the audio. Another device that collects the classification scores and other meta data from this edge device and provides statistics, insights and suggestions into water usage based on the data. (We were not able to finish the second part)
+We propose the following solution. The system consists of a edge device (either an PCB with an audio module or a mobile phone) that both records the audio and does the necessary processing to classify the audio. Another device that collects the classification scores and other meta data from this edge device and provides statistics, insights and suggestions into water usage based on the data. (We were not able to finish the second part). 
+
+`Record Audio (Edge Device)` -> `Classification (Edge Device)` -> `Statistics and Insights (Server/PC)`
 
 # Hardware and Software Setup
 
@@ -51,6 +53,15 @@ This section describes the hardware components and software tools used in the Wa
 #  Data Collection
 
 This was the most crucial step since we had no available datasets to work with. We created our own dataset and we had to go through multiple iterations to do it.
+
+<p align="center">
+  <img src="images/data_collection.png" alt="metrics" width="600">
+</p
+
+<p align="center">
+  <img src="images/data_collection3.png" alt="metrics" width="600">
+</p
+
 
 ## Methodology of data collection
 
@@ -86,6 +97,9 @@ To convert raw audio signals into meaningful representations, feature extraction
 
 In addition to MFCCs, the following features were extracted:
 
+**Mel Spectogram**
+  To capture the temporal at different frequencies.
+
 **Delta and Delta-Delta Coefficients**
   Capture temporal variations and changes in sound over time
 
@@ -99,6 +113,23 @@ In addition to MFCCs, the following features were extracted:
   Captures variations across frequency bands
 
 Statistical measures such as **mean, standard deviation, and maximum values** were computed for each feature. All features were combined into a single feature vector for model input .
+
+
+<!-- 3 photos mfcc1, spec, waveform -->
+
+<p align="center">
+  <img src="images/mfcc1.png" alt="metrics" width="600">
+</p
+
+<p align="center">
+  <img src="images/spectogram.png" alt="metrics" width="600">
+</p
+
+<p align="center">
+  <img src="images/waveform.png" alt="metrics" width="600">
+</p
+
+
 
 ---
 

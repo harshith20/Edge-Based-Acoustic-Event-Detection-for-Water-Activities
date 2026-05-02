@@ -156,19 +156,6 @@ This allows validation of model performance across all activity classes.
 
 ---
 
-### 5. Deployment
-
-The trained model can be deployed directly from Edge Impulse to:
-- Android Phone: Using the edge impulse android library.
-- Edge Devices: Using the edge impulse arduino based library and eon compiler.
-- On phones we can directly deploy the model by scanning this QR code.
-
-<p align="center">
-  <img src="images/qr.png" alt="qr" width="200">
-</p
-
----
-
 ### **Deployment on Mobile Phone**
 
 The trained model was deployed on a mobile application to enable real-time detection of water-based activities using acoustic signals. The application records audio using the smartphone microphone, processes the input, and predicts activities such as handwashing, bottle filling, idle and utensils cleaning. The results are displayed within the app, providing real-time insights into user activity.
@@ -184,6 +171,17 @@ The trained model was deployed on a mobile application to enable real-time detec
 The system relied on a server-based approach, where recorded audio was sent to a backend for processing and prediction. However, this introduced latency and dependency on internet connectivity. To address this limitation, an alternative version of the application was developed to perform on-device inference, allowing direct processing on the mobile device without requiring server communication but it did not completed in mean time.
 
 Users can download and run the application by accessing the **`water_app`** folder from the project GitHub repository. The app can be installed on a mobile device by enabling developer mode and USB debugging, connecting the phone to a laptop, and running the application using Flutter. Detailed setup and usage instructions are provided in the **`README.md`** file included in the repository.
+
+The trained 2D CNN model can be deployed directly from Edge Impulse to:
+- Android Phone: Using the edge impulse android library.
+- Edge Devices: Using the edge impulse arduino based library and eon compiler.
+- On phones we can directly deploy the model by scanning this QR code.
+
+<p align="center">
+  <img src="images/qr.png" alt="qr" width="200">
+</p
+
+---
 
 ---
 

@@ -172,7 +172,21 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 
 # Model Development
 
-We developed a custom feed-forward neural network 
+We developed a custom feed-forward neural network with tensorflow/keras. It receives a flattened vector with 117 features as input(MFCCs, MFCCs deltas, their statistical aggregates). The neural network contains 2 `dense` layers with RELU activations. We also add dropout layers to prevent overfitting. The output layer gives the probability score for the 5 classes.
+
+The input audio which is originally sampled at 44.1 KHz is divided into 2 seconds chunks with 1 second overlap. The features are extracted on this chunk and fed to the model.
+
+We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployment. 
+
+
+<p align="center">
+  <img src="images/nn_architecture.png" alt="metrics" width="300">
+</p>
+
+<p align="center">
+  <img src="images/nn_parameters.png" alt="metrics" width="600">
+</p>
+
 
 ## Iteration 1: The Background Noise Problem
 **The Challenge:** Initially, we recorded data as continuous 2 to 3-minute audio files for each activity. When we tested the first model, it failed on new data. The model was memorizing the background room noise rather than the actual water sounds.
@@ -198,10 +212,6 @@ We developed a custom feed-forward neural network
 **The Change:** We realized a time-independent architecture was necessary for this audio classification task to handle variable event timings.
 
 **The Result:** We moved away from the FCNN to find a model capable of scanning audio sequentially.
-
-<p align="center">
-  <img src="images/nn_architecture.png" alt="metrics" width="300">
-</p>
 
 
 ---
@@ -330,10 +340,6 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
   <img src="images/deployment.png" alt="deployment" width="600">
 </p>
 
-
-
----
-
 ---
 
 ### **Challenges**
@@ -350,26 +356,8 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 **The Result:** The mobile app now records 13 second chunks of raw audio and passes it directly to the model. The model handles its own feature extraction internally, which resolved the mismatch and stabilized the live predictions.
 
 
-## Deployment on Aurdirino device.
+<!-- ## Deployment on Aurdirino device. -->
 
 
 
 
-
-
-
-
-
-
-<!-- ![alt text](images/2d_cnn_architecture.png) -->
-
-
-
-
-
-
-
-
-
-
-<img src="drawing.jpg" alt="drawing" width="200"/>

@@ -56,12 +56,13 @@ This was the most crucial step since we had no available datasets to work with. 
 
 <p align="center">
   <img src="images/data_collection.jpeg" alt="metrics" width="600">
-</p
+</p>
+
+<br>
 
 <p align="center">
   <img src="images/data_collection3.jpeg" alt="metrics" width="600">
-</p
-
+</p>
 
 ## Methodology of data collection
 
@@ -77,7 +78,7 @@ Primarily we first collected two sets of data that was finally used in the devel
 - We collected data across 10 different washrooms. We varied the distance of the recording device by few 10 cm to around 50 cm. We also varied the orientation of the recording device
 - For each activity we collected data for about 2-3 mins. Only exception being Filling the bottle, since each bottle filled up within less the 15 seconds.
 
-**All the development and deployment given here is done in the variable environment. **
+**All the development and deployment given here is done in the variable environment.**
 
 ## Challenges and other failed attempts
 
@@ -121,19 +122,16 @@ Statistical measures such as **mean, standard deviation, and maximum values** we
 
 <p align="center">
   <img src="images/mfcc_1.png" alt="metrics" width="600">
-</p
+</p>
 
 <p align="center">
   <img src="images/spectrogram.png" alt="metrics" width="600">
-</p
+</p>
 
 <p align="center">
   <img src="images/waveform.png" alt="metrics" width="600">
-</p
+</p>
 
-
-
----
 
 ## Data Augmentation
 
@@ -145,17 +143,23 @@ To improve model robustness and handle variability in real-world conditions, dat
 
 These techniques increase dataset diversity and help reduce overfitting, improving generalization .
 
----
-
 ## Feature Visualization and Analysis
 
 Exploratory Data Analysis (EDA) was performed to evaluate the effectiveness of the extracted features.
 
+<p align="center">
+  <img src="images/waveform.png" alt="metrics" width="600">
+</p>
+
+
 ###  Class Distribution
 
-The dataset shows **class imbalance**, where some water activity classes contain more samples than others. This imbalance can bias model predictions and requires techniques like augmentation and balancing .
+The dataset shows **class imbalance**. For example the bottle filling activity has very less data and this is due to the fact that filling the entire bottle takes only 10 seconds and we had to do this activity multiple times even after this we felt short of data. This imbalance can bias model so we use techniques like augmentation and balancing to overcome this.
 
----
+<p align="center">
+  <img src="images/distribution.png" alt="metrics" width="600">
+</p>
+
 
 ### PCA-Based Visualization
 
@@ -163,16 +167,16 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 
 * Distinct clusters indicate effective feature representation
 * Overlapping regions suggest similarity between certain activities
-
----
-
-## Insights
-
 * Overlapping clusters indicate similarity between some water activities
 * Distinct clusters confirm meaningful feature extraction
 * Class imbalance may affect model performance
 
-Overall, feature extraction and visualization validate the effectiveness of the data processing pipeline while highlighting challenges in classification .
+Overall, feature extraction and visualization validate the effectiveness of the data processing pipeline while highlighting challenges in classification.
+
+<p align="center">
+  <img src="images/pca.png" alt="metrics" width="600">
+</p>
+
 
 ---
 

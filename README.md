@@ -3,7 +3,7 @@
 2D CNN Architecture:
 
 <p align="center">
-  <img src="images/2d_cnn_architecture1.png" alt="2D CNN Architecture" width="300">
+  <img src="images/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">
 </p
 
 

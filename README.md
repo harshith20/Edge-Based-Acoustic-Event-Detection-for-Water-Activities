@@ -147,11 +147,6 @@ These techniques increase dataset diversity and help reduce overfitting, improvi
 
 Exploratory Data Analysis (EDA) was performed to evaluate the effectiveness of the extracted features.
 
-<p align="center">
-  <img src="images/waveform.png" alt="metrics" width="600">
-</p>
-
-
 ###  Class Distribution
 
 The dataset shows **class imbalance**. For example the bottle filling activity has very less data and this is due to the fact that filling the entire bottle takes only 10 seconds and we had to do this activity multiple times even after this we felt short of data. This imbalance can bias model so we use techniques like augmentation and balancing to overcome this.

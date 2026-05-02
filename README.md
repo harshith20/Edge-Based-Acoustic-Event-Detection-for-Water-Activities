@@ -187,7 +187,6 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
   <img src="images/nn_parameters.png" alt="metrics" width="600">
 </p>
 
-
 ## Iteration 1: The Background Noise Problem
 **The Challenge:** Initially, we recorded data as continuous 2 to 3-minute audio files for each activity. When we tested the first model, it failed on new data. The model was memorizing the background room noise rather than the actual water sounds.
 
@@ -195,7 +194,6 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 
 **The Result:** The model stopped relying on background noise and began learning the acoustic patterns of the target sounds.
 
----
 
 ## Iteration 2: The Importance of Feature Engineering
 **The Challenge:** The mobile phone records audio at 44.1 kHz, meaning a 3-second clip contains over 132,000 raw data points. Feeding this raw data directly into a model requires significant memory and makes pattern recognition difficult.
@@ -204,7 +202,6 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 
 **The Result:** The data became cleaner and more compressed. The model received a structured map of the audio frequencies rather than a dense raw wave.
 
----
 
 ## Iteration 3: Testing the Fully Connected Neural Network (FCNN)
 **The Challenge:** Using our engineered features, we initially built a Fully Connected Neural Network (FCNN). However, FCNNs look at fixed temporal positions. If a splash occurred at second 1 during training, the network struggled to recognize a splash at second 2 during testing. Additionally, connecting all neurons resulted in a large number of parameters.
@@ -214,7 +211,6 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 **The Result:** We moved away from the FCNN to find a model capable of scanning audio sequentially.
 
 
----
 
 ## Iteration 4: Switching to a 2D CNN
 **The Challenge:** We needed to resolve the rigid timing issue of the FCNN while keeping the model size small enough for a phone.
@@ -223,7 +219,10 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 
 **The Result:** The 2D CNN was able to detect sounds regardless of when they occurred in the clip. This change also reduced the overall model size, making it practical for mobile Edge AI.
 
----
+## Model Quantization
+
+Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We do not lose much accuracy with quantization.
+
 
 ## Iteration 5: Edge Impulse
 

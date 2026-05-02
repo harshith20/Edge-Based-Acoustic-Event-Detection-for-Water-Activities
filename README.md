@@ -172,6 +172,8 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 
 # Model Development
 
+We developed a custom feed-forward neural network 
+
 ## Iteration 1: The Background Noise Problem
 **The Challenge:** Initially, we recorded data as continuous 2 to 3-minute audio files for each activity. When we tested the first model, it failed on new data. The model was memorizing the background room noise rather than the actual water sounds.
 
@@ -207,9 +209,9 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 ## Iteration 4: Switching to a 2D CNN
 **The Challenge:** We needed to resolve the rigid timing issue of the FCNN while keeping the model size small enough for a phone.
 
-**The Change:** We adopted a 1D Convolutional Neural Network (1D CNN). Instead of analyzing the entire audio clip at once, a 1D CNN uses a sliding window to scan the features over time.
+**The Change:** We adopted a 2D Convolutional Neural Network (2D CNN). Instead of analyzing the entire audio clip at once, a 2D CNN uses a sliding window to scan the features over time.
 
-**The Result:** The 1D CNN was able to detect sounds regardless of when they occurred in the clip. This change also reduced the overall model size, making it practical for mobile Edge AI.
+**The Result:** The 2D CNN was able to detect sounds regardless of when they occurred in the clip. This change also reduced the overall model size, making it practical for mobile Edge AI.
 
 ---
 
@@ -256,7 +258,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
   - MaxPooling + Dropout
   - Conv2D (16 filters, 3×3 kernel, ReLU)
   - MaxPooling + Dropout
-- Fully connected output layer with **softmax activation** (5 classes)
+- Fully connected output layer with **softmax activation** (4 classes)
 
 <p align="center">
   <img src="images/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">

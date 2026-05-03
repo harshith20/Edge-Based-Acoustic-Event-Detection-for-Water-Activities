@@ -276,7 +276,7 @@ The system relied on a server-based approach, where recorded audio was sent to a
 Users can download and run the application by accessing the **`water_app`** folder from the project GitHub repository. The app can be installed on a mobile device by enabling developer mode and USB debugging, connecting the phone to a laptop, and running the application using Flutter. Detailed setup and usage instructions are provided in the **`README.md`** file included in the repository.
 
 <p align="center">
-  <img src="images/app_result.png" alt="deployment" width="300">
+  <img src="images/app_result.jpeg" alt="deployment" width="300">
 </p>
 
 

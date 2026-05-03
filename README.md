@@ -168,8 +168,6 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
   <img src="images/pca.png" alt="metrics" width="600">
 </p>
 
----
-
 # Model Development
 
 We developed a custom feed-forward neural network with tensorflow/keras. It receives a flattened vector with 117 features as input(MFCCs, MFCCs deltas, their statistical aggregates). The neural network contains 2 `dense` layers with RELU activations. We also add dropout layers to prevent overfitting. The output layer gives the probability score for the 5 classes.
@@ -187,46 +185,13 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
   <img src="images/nn_parameters.png" alt="metrics" width="600">
 </p>
 
-## Iteration 1: The Background Noise Problem
-**The Challenge:** Initially, we recorded data as continuous 2 to 3-minute audio files for each activity. When we tested the first model, it failed on new data. The model was memorizing the background room noise rather than the actual water sounds.
-
-**The Change:** We split the audio into smaller chunks and balanced the training data. We capped every class to the exact same number of audio chunks to prevent the model from guessing based on class frequency.
-
-**The Result:** The model stopped relying on background noise and began learning the acoustic patterns of the target sounds.
-
-
-## Iteration 2: The Importance of Feature Engineering
-**The Challenge:** The mobile phone records audio at 44.1 kHz, meaning a 3-second clip contains over 132,000 raw data points. Feeding this raw data directly into a model requires significant memory and makes pattern recognition difficult.
-
-**The Change:** We shifted our focus to feature engineering. Instead of raw audio waves, we used Fast Fourier Transforms to convert the sound into frequency heatmaps (Mel Spectrograms) and compressed acoustic features (MFCCs).
-
-**The Result:** The data became cleaner and more compressed. The model received a structured map of the audio frequencies rather than a dense raw wave.
-
-
-## Iteration 3: Testing the Fully Connected Neural Network (FCNN)
-**The Challenge:** Using our engineered features, we initially built a Fully Connected Neural Network (FCNN). However, FCNNs look at fixed temporal positions. If a splash occurred at second 1 during training, the network struggled to recognize a splash at second 2 during testing. Additionally, connecting all neurons resulted in a large number of parameters.
-
-**The Change:** We realized a time-independent architecture was necessary for this audio classification task to handle variable event timings.
-
-**The Result:** We moved away from the FCNN to find a model capable of scanning audio sequentially.
-
-
-
-## Iteration 4: Switching to a 2D CNN
-**The Challenge:** We needed to resolve the rigid timing issue of the FCNN while keeping the model size small enough for a phone.
-
-**The Change:** We adopted a 2D Convolutional Neural Network (2D CNN). Instead of analyzing the entire audio clip at once, a 2D CNN uses a sliding window to scan the features over time.
-
-**The Result:** The 2D CNN was able to detect sounds regardless of when they occurred in the clip. This change also reduced the overall model size, making it practical for mobile Edge AI.
-
 ## Model Quantization
 
 Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We do not lose much accuracy with quantization.
 
+## Edge Impulse
 
-## Iteration 5: Edge Impulse
-
-### 1. Impulse Configuration
+### Impulse Configuration
 
 The impulse defines how raw audio is segmented into samples.
 
@@ -238,11 +203,11 @@ This step converts continuous audio into fixed-length examples suitable for feat
 
 ---
 
-### 2. DSP Block: MFCC (Feature Extraction)
+### DSP Block: MFCC (Feature Extraction)
 
 Mel Frequency Cepstral Coefficients (MFCCs) are used to represent audio features.
 
-#### MFCC Parameters
+**MFCC Parameters**
 - Number of MFCC coefficients: 13  
 - Number of mel filter banks: 32  
 - Frame length: 25 ms  
@@ -256,11 +221,11 @@ Each audio window is transformed into a 2D MFCC feature map for learning.
 
 ---
 
-### 3. Learning Block: Audio Classifier
+### Learning Block: Audio Classifier
 
 A **2D Convolutional Neural Network (CNN)** is used for classification.
 
-#### Model Architecture
+**Model Architecture**
 - Reshape MFCC features into a 2D format
 - Convolutional layers:
   - Conv2D (8 filters, 3×3 kernel, ReLU)
@@ -274,7 +239,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
 </p>
 
 
-#### Training Details
+**Training Details**
 - Loss function: Categorical Cross-Entropy  
 - Optimizer: Adam  
 - Training includes internal shuffling and regularization  
@@ -282,7 +247,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
 
 ---
 
-### 4. Model Evaluation
+Model Evaluation
 
 Edge Impulse automatically evaluates the model using:
 - Test accuracy
@@ -291,19 +256,19 @@ Edge Impulse automatically evaluates the model using:
 
 This allows validation of model performance across all activity classes.
 
-#### Testing metrics:
+**Testing metrics:**
 <p align="center">
   <img src="images/testing_metrics.png" alt="metrics" width="600">
 </p>
 
-#### Confusion Matrix:
+**Confusion Matrix:**
 <p align="center">
   <img src="images/testing_confusion_matrix.png" alt="metrics" width="600">
 </p>
 
----
+# Deployment
 
-### **Deployment on Mobile Phone**
+## Deployment on Mobile Phone
 
 The trained model was deployed on a mobile application to enable real-time detection of water-based activities using acoustic signals. The application records audio using the smartphone microphone, processes the input, and predicts activities such as handwashing, bottle filling, idle and utensils cleaning. The results are displayed within the app, providing real-time insights into user activity.
 
@@ -339,9 +304,7 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
   <img src="images/deployment.png" alt="deployment" width="600">
 </p>
 
----
-
-### **Challenges**
+# Challenges Faced
 
 * Limited experience in mobile application development.
 * Dependency on server-based inference leading to latency.
@@ -353,6 +316,10 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 **The Change:** We embedded the feature engineering directly inside the TensorFlow model by adding a custom preprocessing layer at the front of the network.
 
 **The Result:** The mobile app now records 13 second chunks of raw audio and passes it directly to the model. The model handles its own feature extraction internally, which resolved the mismatch and stabilized the live predictions.
+
+# Future Work
+
+# References
 
 
 ## Course link: https://www.samy101.com/edge-ai-26/

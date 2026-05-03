@@ -229,6 +229,9 @@ Using `Tflite`we quantize the model into int-8 from float-32. We do this to obta
 | `washroom_activity_classifier_quantized.tflite` | 28.99 KB | 0.01 ms |
 
 
+
+<img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/b78f409d-9800-436b-8f82-1450f93f5508" />
+
 During our evaluation, we observed that a 12-second chunk size gave  higher F1 score  for the "bottle filling" event. However, we decided not to use the 12-second window for our final model due to the following practical issues:
 
 **1. Unreliable Sample Size**

@@ -370,6 +370,10 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 - We noticed in most of the data we collected, the flow was laminar which adds to the difficulty, since laminar flow doesn not really produce very distinctive sounds with different activites. We believe a nossle with turbulent flow will perform better.
 - Difficulty in implementing on-device model inference, due to lack of experience in app development, hence we faced many dependency based issues. Especially in the data pre processing phase to extract all the features.
 
+# Github Link:
+
+### https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities
+
 # Future Work
 
 We would like to extend this audio classification task into also water usage estimation task. 

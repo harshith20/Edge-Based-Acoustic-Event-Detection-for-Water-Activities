@@ -203,6 +203,17 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 
 <img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/b78f409d-9800-436b-8f82-1450f93f5508" />
 
+During our evaluation, we observed that a 12-second chunk size gave  higher F1 score  for the "bottle filling" event. However, we decided not to use the 12-second window for our final model due to the following practical issues:
+
+**1. Unreliable Sample Size**
+Requiring 12 seconds of audio per chunk shrank our unseen test dataset down to just 67 total examples. Getting a perfect score on such a small dataset is statistically weak and does not prove the model will work reliably in the real world.
+
+**2. Missing Quick Events**
+Our system automatically skips any audio event that is shorter than the set chunk size. A 12-second window is completely blind to quick actions, like someone washing their hands or running the tap for just 5 to 8 seconds. 
+
+**3. Real-Time Processing Delay**
+In a live deployment, the hardware would have to record a full 12 seconds of audio before it could make the first classification. This waiting period is simply too slow for a device that needs to provide real-time alerts.
+
 
 ## Model Quantization
 

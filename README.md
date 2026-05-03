@@ -200,6 +200,10 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 
 ===============================================================================
 
+
+<img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/b78f409d-9800-436b-8f82-1450f93f5508" />
+
+
 ## Model Quantization
 
 Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We do not lose much accuracy with quantization.

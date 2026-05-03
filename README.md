@@ -299,22 +299,22 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 # Challenges Faced
 
-* Limited experience in mobile application development.
-* Dependency on server-based inference leading to latency.
-* Difficulty in implementing on-device model inference.
-* Runtime errors and instability in the mobile application.
-* Challenges in achieving consistent real-time predictions.
- During live testing, the Flutter mobile app failed to produce accurate predictions. The model was trained to expect engineered features (Spectrograms), but the app was sending raw 44.1 kHz audio, as replicating the feature engineering math natively in Flutter proved difficult.
-
-**The Change:** We embedded the feature engineering directly inside the TensorFlow model by adding a custom preprocessing layer at the front of the network.
-
-**The Result:** The mobile app now records 13 second chunks of raw audio and passes it directly to the model. The model handles its own feature extraction internally, which resolved the mismatch and stabilized the live predictions.
+- The callenges faced in during the data collection are described above in the relavant section.
+- In general dealing with audio based classification is a bit tricky, since when we have to debug the model, i.e. to know where and why it is performing bad is not very clear as vision based classification. But surely the PCA does give insights as disccued above.
+- Moreover dealing with Water based audio is more tricky since the audio is very unstructed unlike human or other voices. There would be very less frequency, amplitude differences if any between activities.
+- We noticed in most of the data we collected, the flow was laminar which adds to the difficulty, since laminar flow doesn not really produce very distinctive sounds with different activites. We believe a nossle with turbulent flow will perform better.
+- Difficulty in implementing on-device model inference, due to lack of experience in app development, hence we faced many dependency based issues. Especially in the data pre processing phase to extract all the features.
 
 # Future Work
 
 We would like to extend this audio classification task into also water usage estimation task. 
 
 # References
+
+
+https://www.tensorflow.org/api_docs/python/tf/lite
+https://docs.arduino.cc/
+https://studio.edgeimpulse.com/studio/980646/impulse/1/dsp/mfcc/6
 
 
 

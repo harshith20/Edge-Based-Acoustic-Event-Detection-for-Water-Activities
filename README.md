@@ -185,6 +185,21 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
   <img src="images/nn_parameters.png" alt="metrics" width="600">
 </p>
 
+
+===============================================================================
+          FINAL RESULTS TABLE: UNSEEN TEST SET METRICS BY CHUNK SIZE
+===============================================================================
+
+|   chunk_size |   num_train_examples |   num_test_examples |   unseen_acc |   unseen_filling_f1 |   unseen_macro_f1 |
+|-------------:|---------------------:|--------------------:|-------------:|--------------------:|------------------:|
+|            3 |                 6260 |                 292 |        0.818 |               0.491 |             0.769 |
+|            5 |                 3740 |                 172 |        0.895 |               0.696 |             0.865 |
+|            8 |                 2310 |                 106 |        0.877 |               0.909 |             0.88  |
+|           12 |                 1520 |                  67 |        0.97  |               1     |             0.972 |
+|           15 |                 1210 |                  52 |        0.962 |               1     |             0.965 |
+
+===============================================================================
+
 ## Model Quantization
 
 Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We do not lose much accuracy with quantization.

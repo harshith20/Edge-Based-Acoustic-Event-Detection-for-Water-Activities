@@ -204,7 +204,7 @@ The testing has been done in completely new environment to validate our model .
 
 ## Model Quantization
 
-Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We did not loose much accuracy with quantization.
+Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.09 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We did not loose much accuracy with quantization.
 
 
 ### Classification Report: Quantized Model (Unseen Test Set)

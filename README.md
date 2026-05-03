@@ -204,7 +204,7 @@ The testing has been done in completely new environment to validate our model .
 
 ## Model Quantization
 
-Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.09 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We did not loose much accuracy with quantization.
+Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.09 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction ~66%. We did not loose much accuracy with quantization.
 
 
 ### Classification Report: Quantized Model (Unseen Test Set)
@@ -228,7 +228,7 @@ Using `Tflite`we quantize the model into int-8 from float-32. We do this to obta
 | `washroom_activity_classifier.tflite` | 94.57 KB | 0.01 ms |
 | `washroom_activity_classifier_quantized.tflite` | 28.99 KB | 0.01 ms |
 
-
+### F1 score vs Chunk Size
 
 Our initial model using 3-second chunks struggled to detect the "bottle filling" event. Because filling a bottle creates a distinct, continuous sound from start to finish, we tested larger chunk sizes to see if capturing the entire event would help the model learn the complete pattern.
 <img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/b78f409d-9800-436b-8f82-1450f93f5508" />
@@ -244,7 +244,7 @@ Our system automatically skips any audio event that is shorter than the set chun
 **3. Real-Time Processing Delay**
 In a live deployment, the hardware would have to record a full 12 seconds of audio before it could make the first classification. This waiting period is simply too slow for a device that needs to provide real-time alerts.
 
-To address this, we tested different model architectures to achieve a strong F1 score using smaller audio chunks.
+To address this, we switched to 2d CNN architechture to achieve a strong F1 score at smaller audio chunks.
 
 
 ## Edge Impulse

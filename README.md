@@ -121,15 +121,15 @@ Statistical measures such as **mean, standard deviation, and maximum values** we
 <!-- 3 photos mfcc1, spec, waveform -->
 
 <p align="center">
-  <img src="images/mfcc_1.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/mfcc_1.png" alt="metrics" width="600">
 </p>
 
 <p align="center">
-  <img src="images/spectrogram.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/spectrogram.png" alt="metrics" width="600">
 </p>
 
 <p align="center">
-  <img src="images/waveform.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/waveform.png" alt="metrics" width="600">
 </p>
 
 
@@ -152,7 +152,7 @@ Exploratory Data Analysis (EDA) was performed to evaluate the effectiveness of t
 The dataset shows **class imbalance**. For example the bottle filling activity has very less data and this is due to the fact that filling the entire bottle takes only 10 seconds and we had to do this activity multiple times even after this we felt short of data. This imbalance can bias model so we use techniques like augmentation and balancing to overcome this.
 
 <p align="center">
-  <img src="images/distribution.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/distribution.png" alt="metrics" width="600">
 </p>
 
 
@@ -165,7 +165,7 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 * Clearly the PCA also suggests class imbalance.
 
 <p align="center">
-  <img src="images/pca.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/pca.png" alt="metrics" width="600">
 </p>
 
 # Model Development
@@ -178,11 +178,11 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 
 
 <p align="center">
-  <img src="images/nn_architecture.png" alt="metrics" width="300">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/nn_architecture.png" alt="metrics" width="300">
 </p>
 
 <p align="center">
-  <img src="images/nn_parameters.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/nn_parameters.png" alt="metrics" width="600">
 </p>
 
 
@@ -250,7 +250,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
 - Fully connected output layer with **softmax activation** (4 classes)
 
 <p align="center">
-  <img src="images/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">
 </p>
 
 
@@ -271,17 +271,17 @@ This allows validation of model performance across all activity classes.
 
 **Testing metrics:**
 <p align="center">
-  <img src="images/testing_metrics.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/testing_metrics.png" alt="metrics" width="600">
 </p>
 
 **Confusion Matrix:**
 <p align="center">
-  <img src="images/testing_confusion_matrix.png" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/testing_confusion_matrix.png" alt="metrics" width="600">
 </p>
 
 **Comparison of Quantized and Unquantized Models Deployment**
 <p align="center">
-  <img src="images/deployment.png" alt="deployment" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/deployment.png" alt="deployment" width="600">
 </p>
 
 # Deployment
@@ -295,7 +295,7 @@ The system relied on a server-based approach, where recorded audio was sent to a
 Users can download and run the application by accessing the **`water_app`** folder from the project GitHub repository. The app can be installed on a mobile device by enabling developer mode and USB debugging, connecting the phone to a laptop, and running the application using Flutter. Detailed setup and usage instructions are provided in the **`README.md`** file included in the repository.
 
 <p align="center">
-  <img src="images/app_result.jpeg" alt="deployment" width="300">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/app_result.jpeg" alt="deployment" width="300">
 </p>
 
 
@@ -313,12 +313,12 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 - On phones we can directly deploy the model by scanning this QR code.
 
 <p align="center">
-  <img src="images/qr.png" alt="qr" width="300">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/qr.png" alt="qr" width="300">
 </p>
 
 <p align="center">
-  <img src="images/impulse_result.jpeg" alt="metrics" width="300">
-  <img src="images/impulse_result2.jpeg" alt="metrics" width="300">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/impulse_result.jpeg" alt="metrics" width="300">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/impulse_result2.jpeg" alt="metrics" width="300">
 </p>
 
 ## Video Demo: https://drive.google.com/drive/folders/10U2y83c4DaczARa0WV51AKUjXVdSS8E6

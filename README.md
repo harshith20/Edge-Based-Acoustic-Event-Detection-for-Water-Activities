@@ -172,7 +172,7 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 
 We developed a custom feed-forward neural network with tensorflow/keras. It receives a flattened vector with 117 features as input(MFCCs, MFCCs deltas, their statistical aggregates). The neural network contains 2 `dense` layers with RELU activations. We also add dropout layers to prevent overfitting. The output layer gives the probability score for the 5 classes.
 
-The input audio which is originally sampled at 44.1 KHz is divided into 2 seconds chunks with 1 second overlap. The features are extracted on this chunk and fed to the model.
+The input audio which is originally sampled at 44.1 KHz is divided into 3 seconds chunks with 1 second overlap. The features are extracted on this chunk and fed to the model.
 
 We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployment. 
 
@@ -184,7 +184,9 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 <p align="center">
   <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/nn_parameters.png" alt="metrics" width="600">
 </p>
-<img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/b78f409d-9800-436b-8f82-1450f93f5508" />
+
+
+The testing has been done in completely new environment to validate our model .
 
 ### Classification Report: NN Model (New-Environment Inference)
 
@@ -202,7 +204,7 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 
 ## Model Quantization
 
-Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We do not lose much accuracy with quantization.
+Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We did not loose much accuracy with quantization.
 
 
 ### Classification Report: Quantized Model (Unseen Test Set)

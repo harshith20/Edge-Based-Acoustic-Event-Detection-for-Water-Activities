@@ -55,13 +55,13 @@ This section describes the hardware components and software tools used in the Wa
 This was the most crucial step since we had no available datasets to work with. We created our own dataset and we had to go through multiple iterations to do it.
 
 <p align="center">
-  <img src="images/data_collection.jpeg" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/data_collection.jpeg" alt="metrics" width="600">
 </p>
 
 <br>
 
 <p align="center">
-  <img src="images/data_collection3.jpeg" alt="metrics" width="600">
+  <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/data_collection3.jpeg" alt="metrics" width="600">
 </p>
 
 ## Methodology of data collection

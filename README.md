@@ -275,6 +275,11 @@ The system relied on a server-based approach, where recorded audio was sent to a
 
 Users can download and run the application by accessing the **`water_app`** folder from the project GitHub repository. The app can be installed on a mobile device by enabling developer mode and USB debugging, connecting the phone to a laptop, and running the application using Flutter. Detailed setup and usage instructions are provided in the **`README.md`** file included in the repository.
 
+<p align="center">
+  <img src="images/app_result.png" alt="deployment" width="300">
+</p>
+
+
 ## Deployment on Arduino Device
 
 The trained model from the Edge impulse studio was deployed on Nicla Vision. To do this we built the model using the Arduino librory on Edge Impulse and then compiling and flashing the obtaing files using the Arduino IDE. The IDE was use to provide real time inference, where it was connected to a PC using a USB cable.
@@ -297,6 +302,8 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
   <img src="images/impulse_result2.jpeg" alt="metrics" width="300">
 </p>
 
+## Video Demo: https://drive.google.com/drive/folders/10U2y83c4DaczARa0WV51AKUjXVdSS8E6
+
 # Challenges Faced
 
 - The callenges faced in during the data collection are described above in the relavant section.
@@ -314,7 +321,7 @@ We would like to extend this audio classification task into also water usage est
 - https://www.tensorflow.org/api_docs/python/tf/lite
 - https://docs.arduino.cc/
 - https://studio.edgeimpulse.com/studio/980646/impulse/1/dsp/mfcc/6
-- https://studio.edgeimpulse.com/studio/980798/impulse/1/learning/keras/5
+- https://studio.edgeimpulse.com/public/980798/latest
 
 ## Course link: https://www.samy101.com/edge-ai-26/
 

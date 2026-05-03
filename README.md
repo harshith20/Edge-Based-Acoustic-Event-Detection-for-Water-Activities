@@ -184,24 +184,48 @@ We use `TensorFlow Lite` to save the model in `.tflite` format for edge deployme
 <p align="center">
   <img src="https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/497f2a70e60e5694da70038805b69c9650f87780/images/nn_parameters.png" alt="metrics" width="600">
 </p>
-
-
-===============================================================================
-          FINAL RESULTS TABLE: UNSEEN TEST SET METRICS BY CHUNK SIZE
-===============================================================================
-
-|   chunk_size |   num_train_examples |   num_test_examples |   unseen_acc |   unseen_filling_f1 |   unseen_macro_f1 |
-|-------------:|---------------------:|--------------------:|-------------:|--------------------:|------------------:|
-|            3 |                 6260 |                 292 |        0.818 |               0.491 |             0.769 |
-|            5 |                 3740 |                 172 |        0.895 |               0.696 |             0.865 |
-|            8 |                 2310 |                 106 |        0.877 |               0.909 |             0.88  |
-|           12 |                 1520 |                  67 |        0.97  |               1     |             0.972 |
-|           15 |                 1210 |                  52 |        0.962 |               1     |             0.965 |
-
-===============================================================================
-
-
 <img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/b78f409d-9800-436b-8f82-1450f93f5508" />
+
+### Classification Report: NN Model (New-Environment Inference)
+
+| Class | Precision | Recall | F1-Score | Support |
+|:---|:---:|:---:|:---:|:---:|
+| **cleaning** | 1.00 | 0.80 | 0.89 | 91 |
+| **filling** | 0.44 | 1.00 | 0.61 | 22 |
+| **handwashing** | 1.00 | 0.98 | 0.99 | 87 |
+| **silence** | 0.88 | 0.98 | 0.92 | 138 |
+| **tap_water_running** | 0.91 | 0.68 | 0.78 | 98 |
+| | | | | |
+| **accuracy** | | | **0.88** | **436** |
+| **macro avg** | 0.84 | 0.89 | 0.84 | 436 |
+| **weighted avg** | 0.91 | 0.88 | 0.88 | 436 |
+
+## Model Quantization
+
+Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We do not lose much accuracy with quantization.
+
+
+### Classification Report: Quantized Model (Unseen Test Set)
+
+| Class | Precision | Recall | F1-Score | Support |
+|:---|:---:|:---:|:---:|:---:|
+| **cleaning** | 1.00 | 0.81 | 0.90 | 91 |
+| **filling** | 0.44 | 1.00 | 0.61 | 22 |
+| **handwashing** | 1.00 | 0.99 | 0.99 | 87 |
+| **silence** | 0.88 | 0.98 | 0.93 | 138 |
+| **tap_water_running** | 0.92 | 0.68 | 0.78 | 98 |
+| | | | | |
+| **accuracy** | | | **0.88** | **436** |
+| **macro avg** | 0.85 | 0.89 | 0.84 | 436 |
+| **weighted avg** | 0.92 | 0.88 | 0.89 | 436 |
+
+### TFLite Model Performance Metrics
+
+| Model Version | Model Size | Average Inference Latency |
+|:---|:---|:---|
+| `washroom_activity_classifier.tflite` | 94.57 KB | 0.01 ms |
+| `washroom_activity_classifier_quantized.tflite` | 28.99 KB | 0.01 ms |
+
 
 During our evaluation, we observed that a 12-second chunk size gave  higher F1 score  for the "bottle filling" event. However, we decided not to use the 12-second window for our final model due to the following practical issues:
 
@@ -215,9 +239,6 @@ Our system automatically skips any audio event that is shorter than the set chun
 In a live deployment, the hardware would have to record a full 12 seconds of audio before it could make the first classification. This waiting period is simply too slow for a device that needs to provide real-time alerts.
 
 
-## Model Quantization
-
-Using `Tflite`we quantize the model into int-8 from float-32. We do this to obtain better inference speed and lower memory usage. We reduce the model size from ~0.3 MB in float-32 to ~0.03 MB in int-8 precision obtaining a size reduction 90.55%. We do not lose much accuracy with quantization.
 
 ## Edge Impulse
 

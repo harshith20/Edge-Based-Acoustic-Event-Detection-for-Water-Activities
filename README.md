@@ -314,6 +314,7 @@ We would like to extend this audio classification task into also water usage est
 - https://www.tensorflow.org/api_docs/python/tf/lite
 - https://docs.arduino.cc/
 - https://studio.edgeimpulse.com/studio/980646/impulse/1/dsp/mfcc/6
+- https://studio.edgeimpulse.com/studio/980798/impulse/1/learning/keras/5
 
 ## Course link: https://www.samy101.com/edge-ai-26/
 

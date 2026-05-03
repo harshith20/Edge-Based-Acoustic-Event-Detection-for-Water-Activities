@@ -201,8 +201,6 @@ The impulse defines how raw audio is segmented into samples.
 
 This step converts continuous audio into fixed-length examples suitable for feature extraction.
 
----
-
 ### DSP Block: MFCC (Feature Extraction)
 
 Mel Frequency Cepstral Coefficients (MFCCs) are used to represent audio features.
@@ -218,8 +216,6 @@ Mel Frequency Cepstral Coefficients (MFCCs) are used to represent audio features
 - Pre-emphasis coefficient: 0.98  
 
 Each audio window is transformed into a 2D MFCC feature map for learning.
-
----
 
 ### Learning Block: Audio Classifier
 
@@ -245,9 +241,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
 - Training includes internal shuffling and regularization  
 - Optional audio data augmentation (SpecAugment)
 
----
-
-Model Evaluation
+**Model Evaluation**
 
 Edge Impulse automatically evaluates the model using:
 - Test accuracy
@@ -264,6 +258,11 @@ This allows validation of model performance across all activity classes.
 **Confusion Matrix:**
 <p align="center">
   <img src="images/testing_confusion_matrix.png" alt="metrics" width="600">
+</p>
+
+**Comparison of Quantized and Unquantized Models Deployment**
+<p align="center">
+  <img src="images/deployment.png" alt="deployment" width="600">
 </p>
 
 # Deployment
@@ -298,12 +297,6 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
   <img src="images/impulse_result2.jpeg" alt="metrics" width="300">
 </p>
 
-
-#### Comparison of Quantized and Unquantized Models Deployment
-<p align="center">
-  <img src="images/deployment.png" alt="deployment" width="600">
-</p>
-
 # Challenges Faced
 
 * Limited experience in mobile application development.
@@ -319,7 +312,11 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 # Future Work
 
+We would like to extend this audio classification task into also water usage estimation task. 
+
 # References
+
+
 
 
 ## Course link: https://www.samy101.com/edge-ai-26/
